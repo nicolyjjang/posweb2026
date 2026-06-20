@@ -25,7 +25,7 @@ jobs:
             echo "Configurando o banco de dados..."
             
             which mysql || sudo apt-get install -y mysql-client
-            mysql -h *** -u *** -p*** *** -e "CREATE TABLE IF NOT EXISTS People (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), age INT, cell_phone VARCHAR(15));"
+            mysql -h ${{ secrets.DB_HOST }} -u ${{ secrets.DB_USERNAME }} -p${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} -e "CREATE TABLE IF NOT EXISTS People (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), age INT, cell_phone VARCHAR(15));"
 
     # Step 3: Substitui as variáveis de ambiente no código-fonte e faz o deploy para o servidor remoto
       - name: Config BackEnd file

@@ -59,6 +59,7 @@ def get_person(id):
     if row:
         person = {'id': row[0], 'name': row[1], 'age': row[2], 'cell_phone': row[3]}
         cursor.close()
+        conn.close()
 
         return jsonify(person)
     else:
@@ -94,4 +95,4 @@ def delete_person(id):
 
 # Run the application
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
